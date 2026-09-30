@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jeu de devinette d'un nombre contre un ordinateur.">
+    <link rel="stylesheet" href="style.css">
+    <title>jeu de devinette</title>
+    <script src="devinette.js" defer></script>
+</head>
+<body onload="choixNumber()">
+    <div class="jeu">
+        <h1>Allez Deviner un nombre !</h1>
+        <h3>J’ai choisi mon nombre… À toi de me battre !</h3>
+        <form  class="form" >
+            <label for="proposition">Saisir un nombre</label>
+            <input type="number" name="proposition" id="proposition" required>
+            <input type="text" name="msg" id="msg">
+            <div class="button">
+               <button type="button" id="ressayer">Ressayer</button>
+               <button id="rejouer" type="button">Rejouer</button>
+               <button id="valider" type="button">Valider</button>
+            </div>
+             <input type="text" name="tentative" id="tentative" value="5">
+        </form>
+        <div class="historique">
+        <h4>Historique</h4>
+        <ul id="historiqueListe"></ul>
+    </div>
+    </div>
+    
+</body>
+</html>
