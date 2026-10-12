@@ -1,37 +1,295 @@
-body{
-    background-image: url(background.avif);
-    background-attachment: fixed;
-    background-size: cover;
-    
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.jeu{
-    display: flex;
-   min-height: 100vh;
-    align-items: center;
-   justify-content: center;
-    flex-direction: column;
-    
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 200%;
-    gap: 10px;
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fc;
+    color: #20213a;
+}
 
+/* 2. Conteneur principal */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
 }
-.button{
+
+/* 3. Barre supérieure */
+.topbar {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.brand {
+    color: #20213a;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.brand span {
+    color: #6558e8;
+}
+
+.player-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.summary-content p {
+    color: #6558e8;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.summary-content h2 {
+    font-size: 16px;
+}
+
+.player-button {
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* 4. Présentation */
+.hero {
+    text-align: center;
+    padding: 15px 0 20px;
+}
+
+.hero h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.hero h1,
+.hero p {
+    line-height: 1.4;
+}
+
+.hero p,
+.instruction {
+    color: #777b94;
+}
+
+/* 5. Organisation du jeu et des panneaux */
+.game-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* 6. Carte du jeu */
+.game-card,
+.info-card {
+    background-color: white;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #e8e9f2;
+}
+
+.game-card h2,
+.info-card h2 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.instruction {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* 7. Formulaire */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form > label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#proposition {
+    width: 100%;
+    padding: 13px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#proposition:focus {
+    outline: 2px solid #6558e8;
+}
+
+.attempts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+#tentative {
+    width: 45px;
+    padding: 6px;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    background-color: #eeecff;
+    color: #5043cf;
+    font-weight: bold;
+}
+
+/* 8. Message du jeu */
+.message {
+    padding: 10px;
+    min-height: 40px;
+    border-radius: 8px;
+    background-color: #f5f5fa;
+    text-align: center;
+    font-size: 13px;
+}
+
+.message.success {
+    background-color: #e5f7ef;
+    color: #16866a;
+}
+
+.message.error {
+    background-color: #fff0f1;
+    color: #c74659;
+}
+
+/* 9. Boutons */
+.btn {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #6558e8;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5043cf;
+}
+
+.secondary-actions {
+    display: flex;
     gap: 10px;
 }
-.historique{
-     display: flex;
+
+.secondary-actions .btn {
+    flex: 1;
+}
+
+/* 10. Historique et classement à droite */
+.side-panels {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 200%;
-    gap: 10px;
+    gap: 15px;
+    min-width: 0;
+}
+
+.info-card {
+    min-width: 0;
+}
+
+.history-list,
+.ranking-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.history-list li,
+.ranking-list li {
+    padding: 10px;
+    border-radius: 7px;
+    background-color: #f7f7fc;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+}
+
+.empty-state {
+    color: #777b94;
+    text-align: center;
+}
+
+/* 11. Pied de page */
+.footer {
+    padding: 15px 0;
+    text-align: center;
+    color: #777b94;
+    font-size: 12px;
+}
+
+/* 12. Téléphones et petits écrans */
+@media (max-width: 700px) {
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .player-summary {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .game-card,
+    .info-card {
+        padding: 16px;
+    }
+
+    .history-list,
+    .ranking-list {
+        max-height: 150px;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar {
+        flex-direction: column;
+    }
+
+    .player-summary {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .secondary-actions {
+        flex-direction: column;
+    }
 }

@@ -1,33 +1,124 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="jeu de devinette d'un nombre contre un ordinateur.">
+    <meta name="description" content="Un jeu de devinette pour tester votre logique et défier l'ordinateur.">
+
+    <title>Devine le nombre </title>
+
     <link rel="stylesheet" href="style.css">
-    <title>jeu de devinette</title>
     <script src="devinette.js" defer></script>
 </head>
+
 <body onload="choixNumber()">
-    <div class="jeu">
-        <h1>Allez Deviner un nombre !</h1>
-        <h3>J’ai choisi mon nombre… À toi de me battre !</h3>
-        <form  class="form" >
-            <label for="proposition">Saisir un nombre</label>
-            <input type="number" name="proposition" id="proposition" required>
-            <input type="text" name="msg" id="msg">
-            <div class="button">
-               <button type="button" id="ressayer">Ressayer</button>
-               <button id="rejouer" type="button">Rejouer</button>
-               <button id="valider" type="button">Valider</button>
+
+<main class="container">
+
+    <header class="topbar">
+        <a href="#" class="brand">
+            NUMBER<span>PLAY</span>
+        </a>
+
+        <section class="player-summary">
+            <div class="summary-content">
+                <p>ESPACE JOUEUR</p>
+                <h2 id="prenom">Bonjour !</h2>
             </div>
-             <input type="text" name="tentative" id="tentative" value="5">
-        </form>
-        <div class="historique">
-        <h4>Historique</h4>
-        <ul id="historiqueListe"></ul>
-    </div>
-    </div>
+
+            <button type="button" id="changerJoueur" class="player-button">
+                Changer de joueur
+            </button>
+        </section>
+    </header>
+
     
+    <section class="hero">
+        <h1>À toi de deviner !</h1>
+        <p>
+            L'ordinateur a choisi un nombre entre 0 et 100.
+            Sauras-tu le trouver ?
+        </p>
+    </section>
+
+
+    <section class="game-layout">
+
+      
+        <section class="game-card">
+            <h2>Trouve le nombre secret</h2>
+            <p class="instruction">
+                Entre un nombre et découvre si tu es proche !
+            </p>
+
+            <form class="form" onsubmit="return false;">
+
+                <label for="proposition">Ta proposition</label>
+                <input
+                    type="number"
+                    id="proposition"
+                    min="0"
+                    max="100"
+                    placeholder="Ex. 42"
+                    required
+                >
+
+                <div class="attempts">
+                    <label for="tentative">Tentatives restantes</label>
+                    <input type="text" id="tentative" value="5" readonly>
+                </div>
+
+                <p id="msg" class="message" role="status" aria-live="polite">
+                    Bonne chance ! À toi de jouer.
+                </p>
+
+                <button type="button" id="valider" class="btn btn-primary">
+                    Valider ma réponse
+                </button>
+
+                <div class="secondary-actions">
+                    <button type="button" id="ressayer" class="btn">
+                        Effacer
+                    </button>
+
+                    <button type="button" id="rejouer" class="btn">
+                        Nouvelle partie
+                    </button>
+                </div>
+            </form>
+        </section>
+
+      
+        <aside class="side-panels">
+
+            <article class="info-card">
+                <h2>Historique</h2>
+                <ul id="historiqueListe" class="history-list">
+                    <li class="empty-state">
+                        Tes propositions apparaîtront ici.
+                    </li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h2>Classement</h2>
+                <ul id="statistiquesJoueurs" class="ranking-list">
+                    <li class="empty-state">
+                        Les statistiques apparaîtront ici.
+                    </li>
+                </ul>
+            </article>
+
+        </aside>
+
+    </section>
+
+    <footer class="footer">
+        NUMBERPLAY : Un essai de plus, un défi de plus.
+    </footer>
+
+</main>
+
 </body>
 </html>
